@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "space-x-app": {
+      "hosting": {
+        "assignment-app": [
+          "space-x-app"
+        ]
+      }
+    }
+  }
+}
