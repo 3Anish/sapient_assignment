@@ -45,7 +45,6 @@ export class AppComponent {
     this.prevYearClicked = i;
 
     this.filter(this.yearValue, this.launchValue, this.landingValue);
-    // this.isClicked[i]=false;
   }
   successfulLaunch(launchValue) {
     if (launchValue === true) {
@@ -73,6 +72,7 @@ export class AppComponent {
     this.filter(this.yearValue, this.launchValue, this.landingValue);
     console.log(landingValue);
   }
+
   filter(yearValue, launchValue, landingValue) {
     console.log(yearValue, launchValue, landingValue);
     if (yearValue && launchValue === null && landingValue === null) {
@@ -113,13 +113,28 @@ export class AppComponent {
       (landingValue || landingValue === false) &&
       yearValue === null
     ) {
-      this.service.launchAndLandFiter(launchValue, landingValue).subscribe({
+      this.service.launchAndLandFilter(launchValue, landingValue).subscribe({
         next: (data) => {
           console.log(data);
           this.service.filteredLists = data;
-          //  console.log(this.service.filteredLists);
-          //  this.service.filteredLists=[];
-
+          this.router.navigate(['/filteredList'], { state: { data } });
+        },
+        error: (err) => console.log(err),
+      });
+    } else if ((yearValue && launchValue) || launchValue === false) {
+      this.service.yearAndLaunchFilter(yearValue, launchValue).subscribe({
+        next: (data) => {
+          console.log(data);
+          this.service.filteredLists = data;
+          this.router.navigate(['/filteredList'], { state: { data } });
+        },
+        error: (err) => console.log(err),
+      });
+    } else if ((yearValue && landingValue) || landingValue === false) {
+      this.service.yearAndLandingFilter(yearValue, landingValue).subscribe({
+        next: (data) => {
+          console.log(data);
+          this.service.filteredLists = data;
           this.router.navigate(['/filteredList'], { state: { data } });
         },
         error: (err) => console.log(err),
@@ -133,8 +148,6 @@ export class AppComponent {
         next: (data) => {
           console.log(data);
           this.service.filteredLists = data;
-          // console.log(this.service.filteredLists);
-          //  this.service.filteredLists=[];
           this.router.navigate(['/filteredList'], { state: { data } });
         },
         error: (err) => console.log(err),

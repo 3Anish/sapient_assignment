@@ -2,9 +2,7 @@
   <div class="p-col-12 p-md-6 p-lg-3" *ngFor="let d of allData; let x = index">
     <p-card>
       <p-header>
-       
-          <img src="{{ d.links.mission_patch_small }}" alt="image" />
-       
+        <img src="{{ d.links.mission_patch_small }}" alt="image" />
       </p-header>
       <h4 style="color: #424d9d;">
         {{ d.mission_name }} #{{ d.flight_number }}
