@@ -12,10 +12,10 @@ import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  templateUrl: './filtered.component.html',
+  styleUrls: ['./filtered.component.css'],
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class FilteredComponent implements OnInit, OnDestroy {
   allData: any = [];
   navigationSubscription: any;
   message: string;
@@ -47,10 +47,10 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.allData = obj;
         this.allData = this.allData.data;
         if (this.allData === undefined) {
-         this.router.navigateByUrl('/');
+          this.router.navigateByUrl('/');
         }
         if (this.allData.length === 0) {
-         this.message = 'No Records Found !';
+          this.message = 'No Records Found !';
         }
       },
       error: (err) => console.log(err),

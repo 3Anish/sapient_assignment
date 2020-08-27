@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import {HomeComponent} from './home/home.component';
+import {FilteredComponent} from './filtered/filtered.component';
 //  
 const routes: Routes = [
   {
@@ -10,7 +10,7 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {path:'dashboard', component : DashboardComponent},
-  {path:'filteredList', component:HomeComponent ,runGuardsAndResolvers:"always"},
+  {path:'filteredList', component:FilteredComponent ,runGuardsAndResolvers:"always"},
   // {path:'filteredList1', component:HomeComponent},
   // {path:'filteredList2', component:HomeComponent}
 
